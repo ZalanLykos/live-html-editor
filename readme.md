@@ -1,4 +1,5 @@
 # Live HTML Editor
+<img width="934" height="496" alt="htmeditor" src="https://github.com/user-attachments/assets/c28957cc-62ac-4763-a585-73400a56d85e" />
 
 A **simple, live HTML editor** with real-time preview and inspect elements feature.
 
