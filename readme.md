@@ -29,8 +29,9 @@ A **simple, live HTML editor** with real-time preview and inspect elements featu
 ---
 
 ## 📦 Usage
-Try it live here: [https://zalanlykos.github.io/live-html-editor](https://zalanlykos.github.io/live-html-editor)  
+Try it live here: <a href="https://zalanlykos.github.io/live-html-editor" target="_blank">https://zalanlykos.github.io/live-html-editor</a>  
 Open the editor, type or paste your HTML code, then toggle Inspect Elements to explore the preview and locate code lines.
+
 
 ---
 
