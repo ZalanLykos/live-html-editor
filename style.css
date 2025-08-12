@@ -1,0 +1,361 @@
+
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  body.light {
+    background-color: #f5f7fa;
+    color: #222;
+  }
+  body.dark {
+    background-color: #181a1f;
+    color: #ddd;
+  }
+
+  #app {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Editor container */
+  #left-panel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background: var(--editor-bg);
+    border-right: none;
+    transition: background 0.3s;
+  }
+
+  /* Toolbar */
+  #toolbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--toolbar-bg);
+    border-bottom: 1px solid var(--divider-color);
+  }
+
+  #toolbar button {
+    background: var(--btn-bg);
+    color: var(--btn-color);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: var(--btn-shadow);
+    transition: background-color 0.25s;
+    user-select: none;
+    margin-left: 0.5rem;
+  }
+  #toolbar button:first-child {
+    margin-left: 0; /* No left margin on first button */
+  }
+  #toolbar button:hover {
+    background: var(--btn-hover-bg);
+  }
+/* File submenu */
+#fileSubmenu {
+  display: none;
+  position: absolute;
+  top: 100%;          /* Position right below the button */
+  left: 0;            /* Align left edge exactly with the button's left edge */
+  margin-top: 4px;    /* Small gap for better visual */
+  background: var(--toolbar-bg);
+  border: 1px solid var(--divider-color);
+  box-shadow: 0 0 10px 3px rgba(0, 120, 212, 0.6); /* Glow effect */
+  z-index: 20;
+  min-width: 160px;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+}
+
+#fileSubmenu button {
+  width: 100%;
+  padding: 6px 12px;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--btn-color);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0; /* Ensure no margin that could offset */
+  box-shadow: none; /* No glow on buttons */
+}
+
+
+
+#fileSubmenu button:hover {
+  background: var(--btn-hover-bg);
+}
+
+#fileContainer.open #fileSubmenu {
+  display: block;
+}
+
+
+  /* Positioning the file container relatively to toolbar */
+  #fileContainer {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Code editor */
+#editor-container {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  background: var(--editor-bg);
+  color: var(--editor-fg);
+}
+
+#lineNumbers {
+  background: var(--editor-bg);
+  color: #999;
+  text-align: right;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 15px;
+  line-height: 1.4;
+  user-select: none;
+  overflow: hidden;
+  width: 40px;
+  border-right: 1px solid var(--divider-color);
+}
+
+#code {
+  flex: 1;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 15px;
+  line-height: 1.4;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  resize: none;
+  background: var(--editor-bg);
+  color: var(--editor-fg);
+  overflow: auto;
+  white-space: pre-wrap;
+  tab-size: 2;
+  line-break: normal;
+}
+
+
+  /* Resizable divider */
+ /* Make divider wider to accommodate handle */
+/* Update divider styling */
+#divider {
+  width: 5px;
+  background: var(--divider-color);
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  cursor: default; /* default cursor except drag area */
+  position: relative;
+}
+
+/* The new drag handle area at the top */
+#drag-handle {
+  width: 100%;
+  height: 30px;
+  cursor: col-resize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--divider-color);
+  transition: background-color 0.3s;
+  border-bottom: 1px solid var(--divider-hover);
+}
+
+#drag-handle:hover {
+  background: var(--divider-hover);
+}
+
+/* The icon inside the drag handle */
+#drag-handle span {
+  font-family: monospace, monospace;
+  font-weight: 700;
+  color: var(--btn-color);
+  user-select: none;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* The rest of the divider below drag-handle should not respond to dragging */
+
+  /* Preview container */
+  #right-panel {
+    flex: 1;
+    background: var(--preview-bg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Preview header */
+#preview-header {
+  padding: 0.5rem 1rem;
+  background: var(--toolbar-bg);
+  border-bottom: 1px solid var(--divider-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#preview-header button#inspectBtn {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: var(--btn-shadow);
+  transition: background-color 0.25s;
+  user-select: none;
+}
+
+#preview-header button#inspectBtn:hover {
+  background: var(--btn-hover-bg);
+}
+
+
+  /* Preview iframe */
+  #preview {
+    flex: 1;
+    border: none;
+    background: #fff;
+    transition: background-color 0.3s;
+    position: relative;
+  }
+
+  /* Footer branding bottom right */
+  #branding {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: var(--toolbar-bg);
+    color: var(--footer-color);
+    text-align: center;
+    padding: 4px 0;
+    font-size: 12px;
+    user-select: none;
+    box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+  }
+  #branding a {
+    color: var(--footer-link);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  #branding a:hover {
+    text-decoration: underline;
+  }
+
+  /* Themes variables */
+  body.light {
+    --editor-bg: #ffffff;
+    --editor-fg: #222222;
+    --preview-bg: #fefefe;
+    --toolbar-bg: #eaeef3;
+    --btn-bg: #0078d4;
+    --btn-color: white;
+    --btn-hover-bg: #005a9e;
+    --btn-shadow: 0 2px 6px rgba(0,120,212,0.4);
+    --divider-color: #ddd;
+    --divider-hover: #999;
+    --footer-color: #555;
+    --footer-link: #0078d4;
+  }
+  body.dark {
+    --editor-bg: #22242a;
+    --editor-fg: #eee;
+    --preview-bg: #1e2026;
+    --toolbar-bg: #2a2d35;
+    --btn-bg: #4a90e2;
+    --btn-color: white;
+    --btn-hover-bg: #357ABD;
+    --btn-shadow: 0 2px 8px rgba(74,144,226,0.7);
+    --divider-color: #444;
+    --divider-hover: #777;
+    --footer-color: #aaa;
+    --footer-link: #4a90e2;
+  }
+
+  /* Preferences modal */
+  #prefsModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--toolbar-bg);
+    border: 1px solid var(--divider-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    padding: 1rem 1.5rem;
+    z-index: 200;
+    width: 300px;
+    border-radius: 8px;
+  }
+  #prefsModal.show {
+    display: block;
+  }
+  #prefsModal h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  #prefsModal label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  #prefsModal input[type="radio"] {
+    margin-right: 0.75rem;
+  }
+  #prefsModal button {
+    background: var(--btn-bg);
+    color: var(--btn-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    float: right;
+    margin-top: 1rem;
+    box-shadow: var(--btn-shadow);
+  }
+  #prefsModal button:hover {
+    background: var(--btn-hover-bg);
+  }
+
+  /* Overlay for modal */
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+  }
+  #overlay.show {
+    display: block;
+  }

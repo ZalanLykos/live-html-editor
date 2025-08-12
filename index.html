@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Title: MOST important for Google -->
+  <title>Live HTML Editor - Edit HTML in Real Time Online</title>
+  
+  <!-- Description: Will appear in search results -->
+  <meta name="description" content="Free live HTML editor - instantly write, edit, and preview HTML code in your browser. No signup required. Perfect for web developers and learners.">
+  
+  <!-- Keywords: Not as important now, but still useful -->
+  <meta name="keywords" content="live html editor, online html editor, real time html preview, html playground, html editor online">
+  
+  <!-- Open Graph (for social sharing) -->
+  <meta property="og:title" content="Live HTML Editor - Edit HTML in Real Time">
+  <meta property="og:description" content="Free online HTML editor with live preview. Start coding instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zalanlykos.github.io/live-html-editor/">
+  <meta property="og:image" content="https://zalanlykos.github.io/live-html-editor/thumbnail.png">
+  
+  <!-- Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Live HTML Editor",
+    "url": "https://zalanlykos.github.io/live-html-editor/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "description": "Free online HTML editor with live preview. Start coding instantly.",
+    "author": {
+      "@type": "Person",
+      "name": "Zalan Lykos"
+    }
+  }
+  </script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Live HTML Editor</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body class="light">
+<div id="app">
+  <div id="left-panel">
+    <div id="toolbar" role="toolbar" aria-label="Editor Toolbar">
+      <div id="fileContainer">
+        <button id="fileBtn" aria-haspopup="true" aria-expanded="false" aria-controls="fileSubmenu">File ▼</button>
+        <div id="fileSubmenu" role="menu" aria-label="File menu">
+          <button id="newBtn" role="menuitem">New</button>
+          <button id="openBtn" role="menuitem">Open...</button>
+          <button id="saveBtn" role="menuitem">Save</button>
+          <button id="saveAsBtn" role="menuitem">Save As...</button>
+        </div>
+      </div>
+      <button id="themeBtn" aria-pressed="false" aria-label="Toggle theme">Theme</button>
+    </div>
+    <div id="editor-container" style="display:flex; height:100%; overflow:hidden;">
+    <div id="lineNumbers" aria-hidden="true"></div>
+    <textarea id="code" spellcheck="false" aria-label="HTML code editor" autocomplete="off" autocorrect="off" autocapitalize="off" wrap="off">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Cool Example</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+  }
+  .card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  button {
+    background: #2575fc;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background: #6a11cb;
+  }
+  #message {
+    margin-top: 1rem;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Welcome to a Cool Page</h1>
+    <p>Enjoy this simple gradient card example with a hover button.</p>
+    <button id="myButton">Click Me</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const button = document.getElementById('myButton');
+    const message = document.getElementById('message');
+
+    button.addEventListener('click', () => {
+      message.textContent = "I don't do anything :)";
+    });
+  </script>
+</body>
+</html>
+
+
+</textarea>
+</div>
+  </div>
+  <!-- Replace the divider div in your HTML with this: -->
+<!-- Replace #divider div with this -->
+<div id="divider" role="separator" aria-orientation="vertical" aria-label="Resize editor preview divider" tabindex="0">
+  <div id="drag-handle" title="Drag to resize"><span>&lt;&gt;</span></div>
+</div>
+
+
+  <div id="right-panel">
+    <div id="preview-header">Preview</div>
+
+    <iframe id="preview" title="Live HTML preview"></iframe>
+    </div>
+  </div>
+</div>
+<div id="branding" aria-label="Branding">Live HTML Editor by <a href="https://zalanlykos.github.io" target="_blank" class="active">Zalan Lykos</a></div>
+
+<!-- Preferences Modal -->
+<div id="overlay"></div>
+<div id="prefsModal" role="dialog" aria-modal="true" aria-labelledby="prefsTitle">
+  <h2 id="prefsTitle">Preferences</h2>
+  <form id="prefsForm">
+    <label>
+      <input type="radio" name="theme" value="light" /> Light Theme
+    </label>
+    <label>
+      <input type="radio" name="theme" value="dark" /> Dark Theme
+    </label>
+    <button type="button" id="prefsCloseBtn">Close</button>
+  </form>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+
