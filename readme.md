@@ -1,4 +1,4 @@
-# Live HTML Editor — Zalan Lykos
+# Live HTML Editor
 
 A **simple, live HTML editor** with real-time preview and inspect elements feature.
 
